@@ -32,13 +32,13 @@ describe("SubscriptionManager Contract", function () {
     const incorrectPayment = ethers.parseEther("0.015");
 
     await expect(
-      subscriptionManager.connect(user).purchaseSubscription(months, { value: incorrectPayment })
+      subscriptionManager.connect(user).purchaseSubscription(months, { value: incorrectPayment }),
     ).to.be.revertedWith("Incorrect payment amount");
   });
 
   it("Should reject subscription purchases with zero duration", async () => {
     await expect(
-      subscriptionManager.connect(user).purchaseSubscription(0, { value: ethers.parseEther("0") })
+      subscriptionManager.connect(user).purchaseSubscription(0, { value: ethers.parseEther("0") }),
     ).to.be.revertedWith("Subscription duration must be at least 1 month");
   });
 
